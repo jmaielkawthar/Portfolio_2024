@@ -1,208 +1,155 @@
 $(function () {
     formSelectStyle();
+    formsValidation();
 });
 
-// this fuction for styling  forms dropdown select
+
+function formsValidation() {
+    jQuery.each($('.needs-validation'), function (index, form) {
+        var submitButton = $(form).find('input[type=submit]')[0];
+        $(submitButton).click(function (event) {
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            $(form).addClass('was-validated');
+        });
+    })
+}
+
+
+
+// Function for styling form dropdown select
 function formSelectStyle() {
-    /* get the parent of select and add class name custom select */
-    var select = document.querySelectorAll('select');
-    select.forEach(inputElem => {
-        var parentSelect = inputElem.parentNode;
-        var newParent = document.createElement("DIV");
-        newParent.setAttribute("class", "custom-select");
-        parentSelect.insertBefore(newParent, inputElem);
-        newParent.appendChild(inputElem);
+    // Get all select elements and add the custom select wrapper
+    $('select').each(function () {
+        var $select = $(this);
+        var $parent = $select.parent();
+        var $wrapper = $('<div>', { class: 'custom-select' });
+        $wrapper.insertBefore($select).append($select);
     });
+
     selectStyle();
 }
 
-// this fuction for styling select option  in forms
+// Function for styling select options in forms
 function selectStyle() {
-    var x, i, j, selElmnt, a, b, c;
-    /*look for any elements with the class "custom-select":*/
-    x = document.querySelectorAll(".custom-select");
+    // Find all custom-select elements
+    $(".custom-select").each(function () {
+        var $customSelect = $(this);
+        var $select = $customSelect.find("select");
+        var $selectedDiv = $('<div>', { class: 'select-selected', text: $select.find(':selected').text() });
+        var $optionsDiv = $('<div>', { class: 'select-items select-hide' });
 
-    for (i = 0; i < x.length; i++) {
-        selElmnt = x[i].getElementsByTagName("select")[0];
-        const myOpts = selElmnt.options;
-        /*for each element, create a new DIV that will act as the selected item:*/
-        a = document.createElement("DIV");
-        a.setAttribute("class", "select-selected");
-        a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
-        x[i].appendChild(a);
-        /*for each element, create a new DIV that will contain the option list:*/
-        b = document.createElement("DIV");
-        b.setAttribute("class", "select-items select-hide");
-        for (j = 0; j < selElmnt.length; j++) {
-            /*for each option in the original select element,
-            create a new DIV that will act as an option item:*/
-            if (myOpts[j].value) {
-                c = document.createElement("DIV");
-                c.innerHTML = selElmnt.options[j].innerHTML;
-            } else {
-                c = document.createElement("DIV");
-                c.innerHTML = selElmnt.options[j].innerHTML;
-                c.setAttribute("class", "placeholder");
-                c.style.display = "none";
-            }
-
-            if (myOpts[j].value == 'none') {
-                c = document.createElement("DIV");
-                c.innerHTML = selElmnt.options[j].innerHTML;
-                c.setAttribute("class", "placeholder");
-                c.style.display = "none";
-
-                if (selElmnt.querySelector('optgroup')) {
-                    c.setAttribute("class", "");
-                    c.style.display = "block";
-                }
-            }
-            c.setAttribute("class", "option");
-            c.addEventListener("click", function (e) {
-                /*when an item is clicked, update the original select box,
-                and the selected item:*/
-
-                var y, i, k, s, h;
-
-                s = this.parentNode.parentNode.getElementsByTagName("select")[0];
-                h = this.parentNode.previousSibling;
-
-                s.classList.add("selected");
-                var opt = s.options[s.selectedIndex].innerHTML;
-
-                for (i = 0; i < s.length; i++) {
-
-                    if (s.options[i].innerHTML == this.innerHTML) {
-                        s.selectedIndex = i;
-                        h.innerHTML = this.innerHTML;
-                        y = this.parentNode.getElementsByClassName("same-as-selected");
-                        for (k = 0; k < y.length; k++) {
-                            y[k].removeAttribute("class");
-                        }
-                        this.setAttribute("class", "same-as-selected");
-                        break;
-                    }
-                }
-
-                if ($(s).val() !== '') {
-                    $(s).parent().removeClass('novalid');
-                }
-                h.click();
-
+        // Populate options
+        $select.find('option').each(function () {
+            var $option = $(this);
+            var $optionDiv = $('<div>', {
+                class: $option.val() === 'none' ? 'placeholder' : 'option',
+                text: $option.text()
             });
-            b.appendChild(c);
-        }
-        x[i].appendChild(b);
-        a.addEventListener("click", function (e) {
-            /*when the select box is clicked, close any other select boxes,
-            and open/close the current select box:*/
-            closeAllSelect(this);
-            this.nextSibling.classList.toggle("select-hide");
-            this.classList.toggle("select-arrow-active");
-            this.parentNode.classList.toggle("active");
+
+            if ($option.val() === 'none' || !$option.val()) {
+                $optionDiv.css('display', 'none');
+            }
+
+            $optionDiv.on('click', function () {
+                $select.prop('selectedIndex', $option.index());
+                $selectedDiv.text($option.text()).addClass('select-arrow-active');
+                $optionsDiv.find('.same-as-selected').removeClass('same-as-selected');
+                $optionDiv.addClass('same-as-selected');
+
+                // Validate and remove class if not empty
+                if ($select.val() !== '') {
+                    $customSelect.removeClass('novalid');
+                }
+
+                $selectedDiv.trigger('click');
+            });
+
+            $optionsDiv.append($optionDiv);
+        });
+
+        $customSelect.append($selectedDiv, $optionsDiv);
+
+        // Add click handler to toggle options
+        $selectedDiv.on('click', function (e) {
             e.stopPropagation();
+            closeAllSelect($selectedDiv[0]);
+            $optionsDiv.toggleClass('select-hide');
+            $selectedDiv.toggleClass('select-arrow-active');
+            $customSelect.toggleClass('active');
         });
-    }
-    keepSelectedItem = () => {
-        var selected = $("option:selected");
-        if (selected) {
-            var selectedValue = selected.val();
-            var options = selected.closest('.custom-select').find('.select-items .option');
-            $(options).each(function (index, option) {
-                var optionsValue = $(option).html();
-                if (optionsValue === selectedValue) {
-                    $(this).addClass("same-as-selected");
-                }
-            });
-        }
-        var indexSelected = $("option:selected").index();
-        var scrollPosition = (indexSelected - 2) * 50.89;
-        var handleScrollPosition = function () {
-            if (selected.closest('.custom-select').find('.select-selected').hasClass('select-arrow-active')) {
-                $('.select-items').css("overflow-y", "scroll");
-                $('.select-items').scrollTop(scrollPosition);
-            }
-        };
-        selected.closest('.custom-select').find('.select-selected').click(function () {
-            handleScrollPosition();
-        });
-
-        handleScrollPosition();
-    }
-
-    selectSpecificMembers = () => {
-        const selects = $(".filter-member-list .custom-select .select-items");
-        const filterBtn = $('.filter-member-list .buttons-section .primary-button');
-        const searchbutton = $(".filter-member-list").find("#searchbutton");
-
-        selects.each((i, select) => {
-            var childrens = $(select).children();
-            var selectedItem = $(select).parent().find('.select-selected');
-            var firstChild = childrens.eq(0);
-            firstChild.css("display", "none");
-
-            $(select).click(function () {
-                if (selectedItem.text() == firstChild.text()) {
-                    firstChild.css("display", "none");
-                }
-                else {
-                    firstChild.css("display", "block");
-                }
-            });
-
-            if ((selectedItem.text() == firstChild.text()) && (searchbutton.val() == 1)) {
-                firstChild.css("display", "none");
-            }
-            else {
-                firstChild.css("display", "block");
-            }
-            /* when we reload the page */
-            const pageAccessedByReload = (
-                (window.performance.navigation && window.performance.navigation.type === 1) ||
-                window.performance
-                    .getEntriesByType('navigation')
-                    .map((nav) => nav.type)
-                    .includes('reload')
-            );
-            if (pageAccessedByReload) {
-                if (selectedItem.text() == firstChild.text()) {
-                    firstChild.css("display", "none");
-                }
-                else {
-                    firstChild.css("display", "block");
-                }
-
-            }
-        })
-    }
-    $(document).ready(function () {
-        selectSpecificMembers();
-        keepSelectedItem();
     });
-    function closeAllSelect(elmnt) {
-        /*a function that will close all select boxes in the document,
-        except the current select box:*/
-        var x, y, i, arrNo = [];
-        x = document.getElementsByClassName("select-items");
-        y = document.getElementsByClassName("select-selected");
 
-        for (i = 0; i < y.length; i++) {
-            if (elmnt == y[i]) {
-                arrNo.push(i)
+    // Handle selected items and scroll position
+    keepSelectedItem();
+    selectSpecificMembers();
 
-            } else {
-                y[i].classList.remove("select-arrow-active");
-                y[i].parentNode.classList.remove("active");
-            }
-        }
-        for (i = 0; i < x.length; i++) {
-            if (arrNo.indexOf(i)) {
-                x[i].classList.add("select-hide");
-            }
-        }
-    }
-    /*if the user clicks anywhere outside the select box,
-    then close all select boxes:*/
-    document.addEventListener("click", closeAllSelect);
+    // Close all select boxes when clicking outside
+    $(document).on('click', closeAllSelect);
 }
 
+// Keep the selected item visually updated
+function keepSelectedItem() {
+    $("option:selected").each(function () {
+        var $selected = $(this);
+        var $customSelect = $selected.closest('.custom-select');
+        var $options = $customSelect.find('.select-items .option');
+        var selectedText = $selected.text();
+
+        $options.each(function () {
+            var $option = $(this);
+            if ($option.text() === selectedText) {
+                $option.addClass('same-as-selected');
+            }
+        });
+
+        // Scroll to the correct position
+        var index = $selected.index();
+        var scrollPosition = (index - 2) * 50.89;
+        $customSelect.find('.select-items').scrollTop(scrollPosition);
+    });
+}
+
+// Style specific members
+function selectSpecificMembers() {
+    $(".filter-member-list .custom-select .select-items").each(function () {
+        var $selectItems = $(this);
+        var $firstChild = $selectItems.children().eq(0);
+        var $selectedItem = $selectItems.siblings('.select-selected');
+        var $searchButton = $(".filter-member-list").find("#searchbutton");
+
+        $firstChild.hide();
+
+        $selectItems.on('click', function () {
+            if ($selectedItem.text() === $firstChild.text()) {
+                $firstChild.hide();
+            } else {
+                $firstChild.show();
+            }
+        });
+
+        if ($selectedItem.text() === $firstChild.text() && $searchButton.val() === '1') {
+            $firstChild.hide();
+        } else {
+            $firstChild.show();
+        }
+
+        if (performance.navigation.type === performance.navigation.TYPE_RELOAD) {
+            $firstChild.toggle($selectedItem.text() !== $firstChild.text());
+        }
+    });
+}
+
+// Close all select boxes except the current one
+function closeAllSelect(except) {
+    $(".select-items").not($(except).siblings('.select-items')).addClass("select-hide");
+    $(".select-selected").not(except).removeClass("select-arrow-active");
+    $(".custom-select").not($(except).parent()).removeClass("active");
+}
+
+// Initialize form select style
+$(document).ready(function () {
+    formSelectStyle();
+});

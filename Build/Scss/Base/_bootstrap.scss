@@ -1,4 +1,4 @@
-
+@import "../../node_modules/bootstrap/scss/bootstrap";
 @import "../../node_modules/bootstrap/scss/functions";
 @import "../../node_modules/bootstrap/scss/variables";
 @import "../../node_modules/bootstrap/scss/mixins";
@@ -12,37 +12,40 @@
 @import "../../node_modules/bootstrap/scss/nav";
 @import "../../node_modules/bootstrap/scss/card";
 
-@include media-breakpoint-between(tns, md){
+@include media-breakpoint-between(tns, md) {
   .form-row {
     display: flex;
     flex-wrap: wrap;
     margin-right: -$form-grid-gutter-width-mobile * .5;
     margin-left: -$form-grid-gutter-width-mobile * .5;
-  
-    > .col,
-    > [class*="col-"] {
+
+    >.col,
+    >[class*="col-"] {
       padding-right: $grid-gutter-width ;
       padding-left: $grid-gutter-width ;
     }
   }
-  .container, [class*="container-"]{
-    padding-right: $grid-gutter-width / 2 ;
-    padding-left: $grid-gutter-width/ 2 ;
+
+  .container,
+  [class*="container-"] {
+    padding-right: $grid-gutter-width / 2;
+    padding-left: $grid-gutter-width/ 2;
   }
-  .row{
+
+  .row {
     margin-right: -1 * $grid-gutter-width-mobile / 2;
-    margin-left: -1*  $grid-gutter-width-mobile / 2;
+    margin-left: -1* $grid-gutter-width-mobile / 2;
   }
-  .row > .col,
-  .row > [class*="col-"] {
+
+  .row>.col,
+  .row>[class*="col-"] {
     padding-right: $grid-gutter-width-mobile / 2;
     padding-left: $grid-gutter-width-mobile / 2;
   }
 
-  .row.no-gutters > .col,
-  .row.no-gutters > [class*="col-"] {
+  .row.no-gutters>.col,
+  .row.no-gutters>[class*="col-"] {
     padding-right: 0;
     padding-left: 0;
   }
 }
-

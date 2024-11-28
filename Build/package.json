@@ -11,6 +11,7 @@
     "url": "git+ssh://git@bitbucket.org:goldland/onraon-abacons-sitepackage.git"
   },
   "devDependencies": {
+    "browser-sync": "^2.29.3",
     "del": "^5.1.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.0",
@@ -28,11 +29,10 @@
   },
   "dependencies": {
     "@fancyapps/fancybox": "^3.5.7",
-    "bootstrap": "^4.6.0",
+    "bootstrap": "^5.2.0",
     "bootstrap-datepicker": "^1.9.0",
     "bootstrap-offcanvas": "^1.0.0",
     "bootstrap-sass": "^3.4.1",
-    "browser-sync": "^2.27.11",
     "jquery": "^3.6.3",
     "jquery-ui": "^1.12.1",
     "masonry-layout": "^4.2.2",

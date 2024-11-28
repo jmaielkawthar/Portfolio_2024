@@ -18,8 +18,8 @@ gulp.task('processCss', done => {
     return gulp.src([
         'Scss/main.scss',
     ])
-    // For production
-        .pipe(sass({outputStyle: 'nested'}).on('error', sass.logError))
+        // For production
+        .pipe(sass({ outputStyle: 'nested' }).on('error', sass.logError))
         .pipe(autoprefixer({
             overrideBrowserslist: ['last 2 versions'],
             cascade: false
@@ -28,13 +28,13 @@ gulp.task('processCss', done => {
         .pipe(gulp.dest('Templates/Prod'))
 
         // For distribution
-        .pipe(sass({outputStyle: 'nested'}).on('error', sass.logError))
+        .pipe(sass({ outputStyle: 'nested' }).on('error', sass.logError))
         .pipe(autoprefixer({
             overrideBrowserslist: ['last 2 versions'],
             cascade: false
         }))
         .pipe(rename('dist.main.min.css'))
-        .pipe(stripCssComments({preserve: false}))
+        .pipe(stripCssComments({ preserve: false }))
         .pipe(gulp.dest('../Resources/Public/Dist'));
 
     done();
@@ -55,7 +55,7 @@ gulp.task('processJs', done => {
         'Js/forms.js',
         'Js/main.js'
     ])
-    // For production
+        // For production
         .pipe(concat('prod.main.js'))
         .pipe(gulp.dest('Templates/Prod'))
         // For distribution
@@ -78,7 +78,7 @@ gulp.task('copyFonts', done => {
         'Templates/Fonts/**/*.woff2'
     ])
 
-    // copy for dist
+        // copy for dist
         .pipe(gulp.dest('../Resources/Public/Fonts'))
     done();
 });

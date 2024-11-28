@@ -3,7 +3,6 @@ $(function () {
     toggleSubmenu();
     headerSlider();
     stickyMenu();
-    formsValidation();
     toggleAccordion();
     uploadfile();
     GalleryFancyBox();
@@ -99,19 +98,6 @@ function stickyMenu() {
     });
 }
 
-
-function formsValidation() {
-    jQuery.each($('.needs-validation'), function (index, form) {
-        var submitButton = $(form).find('input[type=submit]')[0];
-        $(submitButton).click(function (event) {
-            if (!form.checkValidity()) {
-                event.preventDefault();
-                event.stopPropagation();
-            }
-            $(form).addClass('was-validated');
-        });
-    })
-}
 
 function uploadfile() {
     var i = 0;

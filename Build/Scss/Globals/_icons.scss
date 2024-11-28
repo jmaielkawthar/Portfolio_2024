@@ -16,30 +16,56 @@
     &-menu-close {
         @extend .icon;
         width: 14px;
-        height: 14px; 
+        height: 14px;
         background-image: url(../Img/Icons/menu_close.svg);
     }
-    
+
     &-linkedin {
-        position: relative;
-        padding-left: 25px;
-        display: flex;
-        &:before{
-            position: absolute;
-            content:"";
-            @extend .icon;
-            left: 0;
-            top: 5px;
-            width: 15px;
-            height: 15px;
-            background-image: url(../Img/Icons/linkedIn.svg);
+        &:before {
+            background-image: url(../Img/Icons/social_media/linkedin_icon.svg);
+        }
+    }
+
+    &-github {
+        &:before {
+            background-image: url(../Img/Icons/social_media/github_icon.svg);
+        }
+    }
+
+    &-facebook {
+        &:before {
+            background-image: url(../Img/Icons/social-media/white-icons/facebook_icon.svg);
         }
 
     }
-    &-cloud-upload{
+
+    &-whatsup {
+        &:before {
+            background-image: url(../Img/Icons/social-media/white-icons/whatsup_icon.svg);
+        }
+    }
+}
+
+
+.social-link {
+    position: relative;
+    display: flex;
+    font-size: 0;
+    width: 32px;
+    height: 32px;
+    background-size: 32px 32px;
+
+    &:before {
+        position: absolute;
+        content: "";
         @extend .icon;
-        width: 52px;
-        height: 52px;
-        background-image: url(../Img/Icons/upload-file-icon.svg);
+        left: 0;
+        top: 0;
+        width: 32px;
+        height: 32px;
+    }
+
+    &:hover {
+        transform: scale(1.1);
     }
 }

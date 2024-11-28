@@ -1,76 +1,103 @@
-
-a{
+a {
     // default link
-    // 16/22/400
+    // 16/25/400
+    font-family: $font-family-base;
+    cursor: pointer;
     font-size: $font-size-regular-mobile-0;
-    line-height : $line-height-regular-mobile-0;
-    color: $dark-gray;
+    line-height: $line-height-regular-mobile-0;
+    color: $color-black;
+
     @include media-breakpoint-up(md) {
-        font-size:  $font-size-regular-0;
-        line-height:$line-height-regular-0;
+        font-size: $font-size-regular-0;
+        line-height: $line-height-regular-0;
     }
-    &:hover{
-        color: $dark-gray
+
+    &:hover {
+        color: $color-action
     }
-    
+
     &.disabled {
         pointer-events: none;
         cursor: default;
     }
 }
 
-// link without hover action
-.link{
-    text-decoration: none;
+// link 
+.link {
+    color: $color-black;
+    text-decoration: underline;
+    text-underline-position: under;
+
     &:hover {
-        text-decoration: none;
+        color: $color-action;
+        text-decoration: underline;
+
     }
 }
-// link with colored text on hover 
-.colored-link { 
-    color: $dark-gray;
+
+// link with colored text & line on hover 
+.colored-link {
+    color: $color-black;
     text-decoration: none;
+    text-underline-position: under;
+    border-bottom: 1px solid $color-black;
+
     &:hover {
+        color: $color-action;
         text-decoration: none;
-        color :$dark-gray_1;
+        border-bottom: 1px solid $color-action;
     }
 }
-// link with underlined text on hover 
-.underline-link{
+
+// link with  underlined text & colored line on hover 
+.underline-link {
+
     padding-bottom: 4px;
     border-bottom: 1px solid transparent;
     text-decoration: none;
-    &:hover{
+
+    &:hover {
+        color: $color-black;
         text-decoration: none;
-        border-bottom: 1px solid $color-yellow;
+        border-bottom: 1px solid $color-action;
     }
 }
-// link with colored & underlined text on hover 
-.underline-colored-link{
-    color: $dark-gray;
+
+// link with underlined colored line &  colored text  on hover 
+.underline-colored-link {
+    color: $color-black;
     padding-bottom: 4px;
     border-bottom: 1px solid transparent;
     text-decoration: none;
+
     &:hover {
         text-decoration: none;
-        border-bottom: 1px solid $color-yellow;
-        color :$dark-gray_1;
+        border-bottom: 1px solid $color-action;
+        //color: $dark-gray_1;
     }
 }
+
 // link with animated underlined text on hover 
 .animated-link {
     a {
+        font-size: 16px;
+        line-height: 30px;
+        font-weight: 700;
         position: relative;
         display: inline-block;
         text-decoration: none;
-        border-bottom: 1px solid transparent;
+        border-bottom: 2px solid transparent;
         padding-bottom: 2px;
+
         &:hover {
-            border-bottom: 1px solid transparent;
+            color: $color-black;
+            border-bottom: 2px solid transparent;
+
             &:before {
                 right: 0 !important;
             }
         }
+
         &::before {
             content: '';
             position: absolute;
@@ -78,12 +105,11 @@ a{
             left: 0;
             right: 100%;
             bottom: 0;
-            background:$color-yellow;
-            height: 1px;
+            background: $color-action;
+            height: 2px;
             transition-property: right;
             transition-duration: 0.5s;
             transition-timing-function: ease-out;
         }
     }
 }
-

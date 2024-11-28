@@ -12,12 +12,12 @@
 }
 
 #accordion{
-    border-top: 1px solid $light-gray-2;
+    border-top: 1px solid $color-gray;
     .card{
         padding: 0;
         border-radius:0;
         border: 1px solid transparent;
-        border-bottom: 1px solid $light-gray-2;
+        border-bottom: 1px solid $color-gray;
     }
     .card-header{
         border-radius:0;

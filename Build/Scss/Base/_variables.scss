@@ -1,12 +1,12 @@
 /* Bootstrap variables */
 $grid-columns: 12;
-$grid-gutter-width: 30px;
-$grid-gutter-width-mobile: 15px;
+$grid-gutter-width: 40px;
+$grid-gutter-width-mobile: 20px;
 $container-max-widths: (
-        xs: 550px,
-        sm: 650px,
-        md: 900px,
-        lg: 1150px,
+        xs: 400px,
+        sm: 688px,
+        md: 930px,
+        lg: 1040px,
         xl: 1320px
 );
 
@@ -21,26 +21,18 @@ $grid-breakpoints: (
 );
 
 $spacer: 1px;
-$spacers: () !default;
+$spacers: (
+        ) !default;
+
 // stylelint-disable-next-line scss/dollar-variable-default
 @for $i from 0 through 100 {
-  $spacers: map-merge(
-        (
-                $i: ($spacer * $i),
-        ),
-        $spacers
-  );
+        $spacers: map-merge(($i: (
+                                $spacer * $i),
+                ),
+                $spacers
+        );
 }
 
 /* bootstrap forms row*/
 $form-grid-gutter-width : 30px;
 $form-grid-gutter-width-mobile: 15px;
-
-.uk-container-xlarge {
-        max-width: 1600px;
-        margin: 0 auto;
-}
-.uk-container {
-        max-width: 1200px;
-        margin: 0 auto;
-}

@@ -1,4 +1,6 @@
-button, a{
+button,
+a {
+    font-family: $font-family-base;
     &.disabled {
         pointer-events: none;
         cursor: default;
@@ -6,121 +8,67 @@ button, a{
 }
 
 .btn {
-    padding: 18px 30px;
-    border-radius: 4px;
-    font-size: 18px;
-    line-height: $line-height-regular-0;
+    padding: 16px 20px;
+    // border-radius: 4px;
+    font-size: 16px;
+    letter-spacing: 0.41px;
+    line-height: 20px;
     font-style: normal;
-    font-weight:  $font-weight-semi-bold;
+    font-weight: $font-weight-semi-bold;
     transition: all .4s ease;
     text-decoration: none;
     text-align: center;
+
     &:hover {
         text-decoration: none;
-     }
+    }
 }
+
 .primary-button {
-   @extend .btn ;
-   border: none;
-   display: inline-block;
-   box-sizing: border-box;
-   text-transform: none;
-    font-size: 20px;
-    letter-spacing: 0.5px;
+    @extend .btn;
+    border: none;
+    display: inline-block;
+    box-sizing: border-box;
+    text-transform: none;
     white-space: nowrap;
-    border-radius: 500px;
-    background:  $dark-gray;
-    padding: 11px 25px;
+    background: $color-action;
     vertical-align: middle;
-    color : $color-yellow ;
+    color: $color-white ;
     max-width: 100%;
     overflow: hidden;
     transition: .3s ease-in-out;
     background-position: 1% 100%;
     background-size: 0;
-    transition-property: color,background-color,background-position,background-size,border-color,box-shadow;
-    background-image: radial-gradient(circle at 1% 100%, #000 1%, transparent 1%);
-    box-shadow: inset 0 0 0.5px 1px rgba(255,255,255,0.075), 0 0 0 1px rgba(0,0,0,0.05), 0 0.3px 0.4px rgba(0,0,0,0.02), 0 0.9px 1.5px rgba(0,0,0,0.045), 0 3.5px 6px rgba(0,0,0,0.09);
+    transition-property: color, background-color, background-position, background-size, border-color, box-shadow;
+    background-image: radial-gradient(circle at 1% 100%, #297a8c 1%, transparent 1%);
+
+    // box-shadow: inset 0 0 0.5px 1px rgba(255,255,255,0.075), 0 0 0 1px rgba(0,0,0,0.05), 0 0.3px 0.4px rgba(0,0,0,0.02), 0 0.9px 1.5px rgba(0,0,0,0.045), 0 3.5px 6px rgba(0,0,0,0.09);
     &:hover {
         background-size: 15000%;
-        color : $light-gray ;
+        color: $color-white ;
         background-color: #3c3c3c;
         box-shadow: none;
     }
-    &.white{
-        color : $color-white ;
+
+    &.white {
+        color: $color-white ;
     }
 }
+
 .secondary-button {
-    @extend .btn ;
-    padding: 10px 25px;
-    font-size: 20px;
-    line-height: 22px;
-    border: 2px solid $dark-gray-2;
-    color: $dark-gray-2;
-    border-radius: 34px;
-    font-weight: $font-weight-bold;
-    letter-spacing: 0.18px;
-    &:hover {
-        background: $dark-gray-2;
-        color : $color-white  ;
-    }
-}
-.third-button {
-    text-transform: uppercase;
-    text-decoration: none;
-    background: $color-navy-006;
-    padding: 12px 24px;
-    border-radius: 5px;
-    color: $color-white;
-    transition: background-color 0.3s ease-out;
-    border: none;
-    @include media-breakpoint-up(md) {
-        padding: 20px 60px;
-    }
+    @extend .btn;
+    padding: 12px 60px;
+    border: 2px solid $color-action;
+    color: $color-black;
 
     &:hover {
-        color: $color-white;
-        text-decoration: none;
-        background-color: #032C5D;
-        //background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), #043F85;
-
+        background: $color-action;
+        color: $color-white ;
     }
 
     &.disabled {
-        border: 2px solid #CDCDCD;
-        color: #CDCDCD;
+        border: 2px solid $color-gray;
+        color: $color-gray;
         background-color: transparent;
     }
-}
-
-.fouth-button {
-    text-decoration: none;
-    color: $color-cyan-002;
-    border: 2px solid $color-cyan-002;
-    border-radius: 5px;
-    padding: 10px 20px;
-    background-color: transparent;
-    transition: background-color 0.3s ease-out;
-
-    @include media-breakpoint-up(md) {
-      
-    }
-
-    &:hover {
-        text-decoration: none;
-        background-color: $color-cyan-002;
-        color: $color-white;
-
-    }
-
-    &.disabled {
-        border: 2px solid $color-neutral-001;
-        color: $color-neutral-001;
-        background-color: transparent;
-    }
-
-}
-.flex-button{
-    display: flex;
 }

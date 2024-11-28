@@ -3,80 +3,156 @@ p,
 blockquote,
 pre {
     word-break: break-word;
-    letter-spacing: $letter-spacing-normal;
-    font-size:   $font-size-regular-0;
+    letter-spacing: $letter-spacing-regular;
+    font-size: $font-size-regular-0;
     line-height: $line-height-regular-0;
-    font-weight: $font-weight-regular;  
+    font-weight: $font-weight-regular;
     font-family: $font-family-base;
-    color:$dark-gray;
+    color: $color-primary;
 }
-p{
+
+p {
     margin-bottom: 15px;
+
     @include media-breakpoint-up(md) {
-        margin-bottom: 25px;
+        margin-bottom: 30px;
     }
-    &.no-margin{
+
+    &.no-margin {
         margin: 0;
     }
 }
 
-.bold {
-    font-weight: $font-weight-bold;
-}
-.font-regular {
-    font-weight: $font-weight-regular;
-}
 
+p,
+.text {
+    // 16/25/400  & 16/16/400 
+    font-size: $font-size-regular-mobile-0;
+    line-height: $line-height-regular-mobile-0;
 
-p ,
-.text{
-    // 16/22/400  // 0.16
-    font-size:$font-size-regular-mobile-0;
-    line-height:$line-height-regular-mobile-0;
     @include media-breakpoint-up(md) {
         font-size: $font-size-regular-0;
-        line-height:$line-height-regular-0;
-    }
-} 
-.text-medium{
-    //24/34.8/600 & 18/23
-    font-size: $font-size-medium-mobile-0;
-    line-height:$line-height-medium-mobile-0;
-    @include media-breakpoint-up(md) {
-        font-size:   $font-size-medium-0;
-        line-height:  $line-height-medium-0;
+        line-height: $line-height-regular-0;
     }
 }
 
-.text-small{
-    // 14/21.7/400 && 11/14 
+.text-medium {
+    //17/27/600 & 16/20
+    font-weight: $font-weight-semi-bold;
+    font-size: $font-size-regular-mobile-0;
+    line-height: $line-height-medium-mobile-2;
+
+
+    @include media-breakpoint-up(md) {
+        font-size: $font-size-medium-4;
+        line-height: $line-height-medium-2;
+    }
+}
+
+.text-small {
+    // 14/20/400 && 11/14 
     font-size: $font-size-small-mobile-0;
-    line-height:$line-height-small-mobile-0;
+    line-height: $line-height-small-mobile-0;
+
     @include media-breakpoint-up(md) {
-        font-size:   $font-size-small-0;
-        line-height:  $line-height-small-0;
+        font-size: $font-size-small-0;
+        line-height: $line-height-small-0;
     }
 }
-.heading-medium{
-    // 36/22/400 & 28/33
-    font-size: $font-size-medium-mobile-0;
-    line-height: $line-height-medium-mobile-0;
-    @include media-breakpoint-up(md) {
-        font-size: $font-size-medium-0;
-        line-height:  $line-height-regular-0;
-    }
 
-}
+.headline-small {
+    //16/20/700 & 16/16/600
+    font-weight: $font-weight-semi-bold;
+    font-size: $font-size-regular-mobile-0;
+    line-height: $line-height-regular-mobile-0;
 
-.heading-small{
-    //20/23.4/600 & 16/22/600
-    font-weight: $font-weight-semi-bold;  
-    font-size:$font-size-regular-mobile-0;
-    line-height:$line-height-regular-mobile-0;
     @include media-breakpoint-up(md) {
+        font-weight: $font-weight-bold;
         font-size: $font-size-regular-0;
-        line-height:$line-height-regular-0;
+        line-height: $line-height-regular-0;
     }
 }
 
 
+
+.text-with-line {
+    font-size: 36px;
+    line-height: 25px;
+    font-weight: 600;
+    color: $color-primary;
+    position: relative;
+    padding-left: 100px;
+
+    &:before {
+        content: "";
+        position: absolute;
+        background-color: $color-black;
+        width: 70px;
+        height: 8px;
+        left: 0;
+        bottom: 0;
+    }
+}
+
+.text-with-vertical-line {
+    font-size: 16px;
+    line-height: 25px;
+    color: $color-primary;
+    position: relative;
+    padding: 25px 10px 25px 40px;
+
+    &:before {
+        content: "";
+        position: absolute;
+        background-color: $color-bg-blue;
+        width: 8px;
+        height: 100%;
+        left: 0;
+        top: 0;
+    }
+}
+
+.numbered-title {
+    z-index: 0;
+    font-size: 36px;
+    line-height: 36px;
+    font-weight: 700;
+    padding: 20px 0;
+    font-family: $font-family-base;
+    position: relative;
+
+    @include media-breakpoint-up(md) {
+        font-size: 64px;
+        line-height: 64px;
+        padding: 40px 0;
+
+    }
+
+    &:before {
+        font-family: $font-family-base;
+        content: "01";
+        font-size: 100px;
+        line-height: 100px;
+        color: $color-bg-gray;
+        position: absolute;
+        width: auto;
+        height: auto;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: -1;
+
+        @include media-breakpoint-up(md) {
+            font-size: 200px;
+            line-height: 200px;
+        }
+    }
+}
+
+@for $i from 1 through 6 {
+    .numbered-title-#{$i} {
+        &:before {
+            content: "0#{$i}";
+        }
+    }
+}

@@ -1,4 +1,10 @@
+html,
+body {
+    font-family: $font-family-base;
+}
+
 .bg {
+
     /* background colors used for the content element teaser grid */
     &-overlay {
         background-blend-mode: overlay;
@@ -7,6 +13,7 @@
         background-size: cover;
     }
 }
+
 .no-scroll {
     position: relative;
     height: 100%;
@@ -21,18 +28,20 @@
     overflow: hidden;
     touch-action: none;
     -ms-touch-action: none;
-    &:before{
+
+    &:before {
         top: 0;
         z-index: 4;
         position: absolute;
         content: "";
         width: 100%;
         height: 100%;
-        background: rgba(56,56,56,0.3);
+        background: rgba(56, 56, 56, 0.3);
         transition: opacity .15s linear;
         backdrop-filter: blur(3px);
     }
 }
+
 ::selection {
     background: #ffe290;
     color: #fff;

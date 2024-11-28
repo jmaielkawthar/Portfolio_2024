@@ -2,13 +2,16 @@
 
     .headline {
         margin-bottom: 25px;
+
         @include media-breakpoint-up(md) {
             margin-bottom: 50px;
         }
     }
-    .subtitle{
-        color: $dark-gray;
+
+    .subtitle {
+        color: $color-primary;
         margin-bottom: 15px;
+
         @include media-breakpoint-up(md) {
             margin-bottom: 25px;
         }
@@ -16,4 +19,3 @@
 
 
 }
-

@@ -22,11 +22,6 @@ label {
     }
 }
 
-.disabled {
-    label {
-        color: $color-primary;
-    }
-}
 
 input,
 textarea,
@@ -80,6 +75,7 @@ input[type=submit] {
     font-size: 18px;
     font-weight: 700;
     line-height: 22px;
+    border-radius: 0;
 }
 
 input[type=search] {
@@ -102,103 +98,108 @@ input[type="search"]::-webkit-search-results-decoration {
     margin-top: 15px;
 }
 
-.form-check {
+.form-check,
+.form-radio {
     margin-bottom: 10px;
+    display: inline-flex;
+    align-items: flex-end;
 
     @include media-breakpoint-up(md) {
         margin-bottom: 15px;
     }
 }
 
-.form-check-inline {
-    align-items: flex-start;
-    flex-wrap: wrap;
 
-    .form-check-input,
-    .form-radio-input {
-        min-width: 24px;
-        cursor: pointer;
-        height: 24px;
-        width: 24px;
-        border: 2px solid;
-        border-color: $color-black;
-        margin-right: 8px;
-        appearance: none;
+.form-check-input,
+.form-radio-input {
+    min-width: 24px;
+    cursor: pointer;
+    height: 24px;
+    width: 24px;
+    border: 2px solid;
+    border-color: $color-black;
+    margin-right: 8px;
+    appearance: none;
 
-        &:focus {
-            background-color: transparent;
-        }
+    &:focus {
+        background-color: transparent;
+        box-shadow: unset;
+    }
 
-        &:checked {
-            position: relative;
-            border-color: $color-action;
+    &:checked {
+        position: relative;
+        border-color: $color-action;
+        background-color: transparent;
 
-            &::before {
-                content: "";
-                position: absolute;
-                background-size: 24px;
-                background-image: url(../Img/Icons/check-mark.svg);
-                height: 24px;
-                width: 24px;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-            }
-        }
-
-        &:disabled {
-            border-color: darken($color: $color-gray, $amount: 15);
-            background-color: $color-gray ;
-            pointer-events: none;
-            cursor: unset;
-
-            ~ {
-                .form-check-label {
-                    opacity: 0.8;
-                    color: $color-gray;
-                }
-            }
+        &::before {
+            content: "";
+            position: absolute;
+            background-size: 24px;
+            background-image: url(../Img/Icons/check-mark.svg);
+            height: 24px;
+            width: 24px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
     }
 
+    &:checked[type="checkbox"] {
+        --bs-form-check-bg-image: unset;
+    }
 
-    .form-radio-input {
-        border-radius: 50%;
+    &:disabled {
+        border-color: darken($color: $color-gray, $amount: 15);
+        background-color: $color-gray ;
+        pointer-events: none;
+        cursor: unset;
 
-        &:checked {
-            &::before {
-                background-image: unset;
-                background-color: $color-action;
-                border-radius: 50%;
-                height: 14px;
-                width: 14px;
-            }
-        }
-
-        &:disabled {
-            border-color: darken($color: $color-gray, $amount: 15);
-            background-color: $color-gray ;
-            pointer-events: none;
-            cursor: unset;
-
-            ~ {
-                .form-radio-label {
-                    opacity: 0.8;
-                    color: $color-gray;
-                }
+        ~ {
+            .form-check-label {
+                opacity: 0.8;
+                color: $color-gray;
             }
         }
     }
 
 }
 
-.form-radio {
-    margin-bottom: 15px;
+
+.form-radio-input {
+    border-radius: 50%;
+
+    &:checked {
+        &::before {
+            background-image: unset;
+            background-color: $color-action;
+            border-radius: 50%;
+            height: 14px;
+            width: 14px;
+        }
+    }
+
+    &:disabled {
+        border-color: darken($color: $color-gray, $amount: 15);
+        background-color: $color-gray ;
+        pointer-events: none;
+        cursor: unset;
+
+        ~ {
+            .form-radio-label {
+                opacity: 0.8;
+                color: $color-gray;
+            }
+        }
+    }
 }
+
+
+
 
 // valdidation form style 
 form {
     &.was-validated {
+
         .form-group {
             margin-bottom: 20px;
         }

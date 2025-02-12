@@ -208,8 +208,6 @@ include 'Globals/head.php';
 
                     </div>
                     <h2 class="style-guide-title mb-20 mt-40" id="section-styled-texts">styled texts</h2>
-
-
                     <div class="row align-items-center">
                         <div class="col-md-6 col-12 ">
                             <div class="text-with-line">text-with-line</div>
@@ -226,10 +224,10 @@ include 'Globals/head.php';
 
                     <div class="row align-items-center">
                         <div class="col-md-6 col-12 ">
-                            <div class="numbered-title numbered-title-1">Title 1</div>
+                            <div class="numbered-title numbered-title-1">Title 1 .</div>
                         </div>
                         <div class="col-md-6 col-12 ">
-                            <div class="numbered-title numbered-title-2">Title 2</div>
+                            <div class="numbered-title numbered-title-2">Title 2 .</div>
                         </div>
                     </div>
                 </div>
@@ -239,21 +237,17 @@ include 'Globals/head.php';
                         <div class="row align-items-center">
                             <div class="col-auto my-20">
                                 <div class=" d-flex">
-                                    <a href="#" class="primary-button">primary-button</a>
-                                </div>
-                            </div>
-                            <div class="col-auto my-20">
-                                <div class=" d-flex">
-                                    <a href="#" class="primary-button white">primary-button white</a>
+                                    <a href="#" class="primary-btn">primary-btn</a>
                                 </div>
                             </div>
 
+
                             <div class="col-auto my-20">
                                 <div class="d-flex">
-                                    <a href="#" class="secondary-button">secondary-button</a>
+                                    <a href="#" class="secondary-btn">secondary-btn</a>
                                 </div>
                             </div>
-   
+
                         </div>
 
                     </div>
@@ -264,9 +258,16 @@ include 'Globals/head.php';
                         <div class="row row-cols-2">
                             <div class="col">
                                 <div class="form-group">
-                                    <label>Default</label>
-                                    <input class="text-default form-control" placeholder="Placeholder..." type="text" required>
+                                    <input type="text" class="form-control" placeholder="Name" required>
                                     <div class="invalid-feedback">Please fill out this field.</div>
+                                    <div class="valid-feedback">this field is correct.</div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <input type="email" class="form-control" placeholder="Email" required>
+                                    <div class="invalid-feedback">Please fill out this field.</div>
+                                    <div class="valid-feedback">this field is correct.</div>
                                 </div>
                             </div>
 
@@ -284,18 +285,19 @@ include 'Globals/head.php';
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group checkbox-group">
+                                <div class="checkbox-group">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
-                                            value="option1" required>
-                                        <label class="form-check-label" for="inlineCheckbox1">Checbox</label>
+                                        <input class="form-check-input" type="checkbox" id="Checkbox1" value="option1" required>
+                                        <label class="form-check-label" for="Checkbox1">Checbox</label>
+                                        <div class="invalid-feedback">Please fill out this field.</div>
+                                        <div class="valid-feedback">this field is correct.</div>
                                     </div>
 
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox111"
-                                            value="option1" required>
-                                        <label class="form-check-label" for="inlineCheckbox111">Checkbox error</label>
+                                        <input class="form-check-input" type="checkbox" id="Checkbox2" value="option1" required>
+                                        <label class="form-check-label" for="Checkbox2">Checkbox error</label>
                                         <div class="invalid-feedback">Please fill out this field.</div>
+                                        <div class="valid-feedback">this field is correct.</div>
                                     </div>
 
                                 </div>
@@ -303,13 +305,16 @@ include 'Globals/head.php';
                             <div class="col-md-6">
                                 <div class="form-group radiobox-group">
                                     <div class="form-radio form-check-inline">
-                                        <input type="radio" id="Radio1" name="RadioInline" value="one" class=" form-radio-input" required>
-                                        <label class=" form-radio-label" for="Radio1">Radio button</label>
+                                        <input type="radio" id="Radio1" name="RadioInline" value="one" class="form-radio-input" required>
+                                        <label class="form-radio-label" for="Radio1">Radio button</label>
+                                        <div class="invalid-feedback">Please fill out this field.</div>
+                                        <div class="valid-feedback">this field is correct.</div>
                                     </div>
                                     <div class="form-radio form-check-inline">
-                                        <input type="radio" id="Radio2" name="RadioInline" value="two" class=" form-radio-input" required>
-                                        <label class=" form-radio-label" for="Radio2">Radio error</label>
+                                        <input type="radio" id="Radio2" name="RadioInline" value="two" class="form-radio-input" required>
+                                        <label class="form-radio-label" for="Radio2">Radio error</label>
                                         <div class="invalid-feedback">Please fill out this field.</div>
+                                        <div class="valid-feedback">this field is correct.</div>
                                     </div>
 
                                 </div>
@@ -317,7 +322,7 @@ include 'Globals/head.php';
 
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <input class="primary-button" value="submit" type="submit">
+                                    <input class="primary-btn" value="submit" type="submit">
                                 </div>
                             </div>
                         </div>
@@ -564,15 +569,6 @@ include 'Globals/head.php';
         </div>
 
     </div>
-
-
-
-
-
-
-
-
-
 </div>
 <?php
 //------------------------------------------------------------------------------

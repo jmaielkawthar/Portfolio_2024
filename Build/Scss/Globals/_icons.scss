@@ -20,6 +20,12 @@
         background-image: url(../Img/Icons/menu_close.svg);
     }
 
+    &-figma {
+        &:before {
+            background-image: url(../Img/Icons/social_media/figma_icon.svg);
+        }
+    }
+
     &-linkedin {
         &:before {
             background-image: url(../Img/Icons/social_media/linkedin_icon.svg);
@@ -34,14 +40,14 @@
 
     &-facebook {
         &:before {
-            background-image: url(../Img/Icons/social-media/white-icons/facebook_icon.svg);
+            background-image: url(../Img/Icons/social_media/facebook_icon.svg);
         }
 
     }
 
     &-whatsup {
         &:before {
-            background-image: url(../Img/Icons/social-media/white-icons/whatsup_icon.svg);
+            background-image: url(../Img/Icons/social_media/whatsup_icon.svg);
         }
     }
 }

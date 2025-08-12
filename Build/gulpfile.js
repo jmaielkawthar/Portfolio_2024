@@ -11,6 +11,13 @@ const autoprefixer = require('gulp-autoprefixer'),
     uglify = require('gulp-uglify'),
     watch = require('gulp-watch');
 
+    const path = require("path");
+
+// Get the folder structure up to /Build/Templates
+const currentPath = path.resolve(); // e.g. C:\laragon\www\my_project\Build
+const projectName = path.basename(path.resolve(currentPath, "..")); // e.g. my_project
+const proxyPath = `localhost:8080/${projectName}/Build/Templates`;
+
 /* ------------------------------------
 Process CSS
 ------------------------------------ */
@@ -99,14 +106,9 @@ gulp.task('copyFavicon', done => {
 Serve and watch
 ------------------------------------ */
 gulp.task('default', gulp.series('processCss', 'processJs', 'copyFonts', 'copyImages', 'copyFavicon', (done) => {
-    connect.server({
-        // base: './Templates/'
-    }, function () {
         browserSync({
-            proxy: '127.0.0.1:8000'
+          proxy: proxyPath,
         });
-    });
-
     gulp.watch('Scss/**/*.scss').on('change', gulp.series('processCss', function () {
         browserSync.reload();
     }));

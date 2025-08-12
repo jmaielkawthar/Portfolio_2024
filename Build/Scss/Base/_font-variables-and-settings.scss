@@ -25,8 +25,8 @@ $font-size-medium-2 : 25px; //h5
 $font-size-medium-1 : 32px; // h4
 $font-size-medium-0 : 36px; // h3
 
-$font-size-large-1 : 64px; // h2
-$font-size-large-0 : 72px; // h1
+$font-size-large-1 : 54px; // h2
+$font-size-large-0 : 62px; // h1
 
 $font-size-extra-large : 200px;
 /* ------------------------------------
@@ -42,8 +42,8 @@ $line-height-medium-2 : 27px; //h5
 $line-height-medium-1 : 30px; //h4
 $line-height-medium-0 : 42px; //h3
 
-$line-height-large-1 : 64px; //h2
-$line-height-large-0 : 72px; // h1
+$line-height-large-1 : 54px; //h2
+$line-height-large-0 : 68px; // h1
 
 $line-height-extra-large : 200px;
 
@@ -102,36 +102,36 @@ $font-weight-very-extra-bold: 900;
 $font-family-source: 'Inter';
 $font-family-base: $font-family-source;
 
-.font {
-    &-200 {
-        font-weight: $font-extra-light;
-    }
+// .font {
+//     &-200 {
+//         font-weight: $font-extra-light;
+//     }
 
-    &-300 {
-        font-weight: $font-weight-light;
-    }
+//     &-300 {
+//         font-weight: $font-weight-light;
+//     }
 
-    &-400 {
-        font-weight: $font-weight-regular;
-    }
+//     &-400 {
+//         font-weight: $font-weight-regular;
+//     }
 
-    &-500 {
-        font-weight: $font-weight-medium;
-    }
+//     &-500 {
+//         font-weight: $font-weight-medium;
+//     }
 
-    &-600 {
-        font-weight: $font-weight-semi-bold;
-    }
+//     &-600 {
+//         font-weight: $font-weight-semi-bold;
+//     }
 
-    &-700 {
-        font-weight: $font-weight-bold;
-    }
+//     &-700 {
+//         font-weight: $font-weight-bold;
+//     }
 
-    &-800 {
-        font-weight: $font-weight-extra-bold;
-    }
+//     &-800 {
+//         font-weight: $font-weight-extra-bold;
+//     }
 
-    &-900 {
-        font-weight: $font-weight-very-extra-bold;
-    }
-}
+//     &-900 {
+//         font-weight: $font-weight-very-extra-bold;
+//     }
+// }

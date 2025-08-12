@@ -12,6 +12,7 @@ pre {
 }
 
 p {
+    font-family: $font-family-base;
     margin-bottom: 15px;
 
     @include media-breakpoint-up(md) {
@@ -78,10 +79,11 @@ p,
 .text-with-line {
     font-size: 36px;
     line-height: 25px;
-    font-weight: 600;
+    font-weight: $font-weight-semi-bold;
     color: $color-primary;
     position: relative;
     padding-left: 100px;
+    margin-bottom: 25px;
 
     &:before {
         content: "";

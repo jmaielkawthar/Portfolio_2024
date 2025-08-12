@@ -1,3 +1,43 @@
-figcaption{
-    font-family: $font-family-base;
+figcaption {
+  font-family: $font-family-base;
+}
+
+.profile-wrapper {
+  position: relative;
+  background-color: #f4f4f4;
+
+  img {
+    z-index: 1;
+    object-fit: cover;
+    position: relative;
+    padding: 85px;
+    height: auto;
+    // max-height: 545px;
+    width: calc(100% - 45px);
+  }
+
+  // Pink shape (left)
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0; 
+    width: 30%;
+    height: 100%;
+    background-color: #f8dada;
+    border-right: 30px solid white;
+    z-index: 0; 
+  }
+
+  // Black shape (right)
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0; // shift outside the image
+    width: 45px;
+    height: 40%;
+    background-color: #000;
+    z-index: 0;
+  }
 }

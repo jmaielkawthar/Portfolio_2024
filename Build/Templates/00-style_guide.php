@@ -9,7 +9,7 @@ include 'Globals/head.php';
         <div class="container">
             <div class="d-flex">
                 <a href="/" class="navbar-brand ">
-                    <img src="Img/Logo/logo_kj.png" class="d-inline-block align-text-top" alt="brand-logo" width="60" height="60">
+                    <img src="Img/Logo/KJ_logo.png" class="d-inline-block align-text-top" alt="brand-logo" width="60" height="60">
                 </a>
                 <h1 class="style-guide-headline"> Style Guide</h1>
             </div>
